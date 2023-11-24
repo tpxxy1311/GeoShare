@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <Tabs>
         <Tabs.Screen name="friendslist" options={{title: "Friends"}}/>
-        <Tabs.Screen name="index"/>
+        <Tabs.Screen name="index" options={{headerShown: false}}/>
         <Tabs.Screen name="settings" options={{title: "Settings"}}/>
     </Tabs>
   )
