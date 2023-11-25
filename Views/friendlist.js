@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Friends = () => {
+const Friendslist = () => {
   return (
     <View>
-      <Text>Friends</Text>
+      <Text>Friendslist</Text>
     </View>
   )
 }
 
-export default Friends
+export default Friendslist
 
 const styles = StyleSheet.create({})
