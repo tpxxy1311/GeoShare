@@ -1,11 +1,19 @@
 import "react-native-gesture-handler";
 import Navigation from "./navigation/navigation";
-
-
+import { useState } from "react";
+import Register from "./Views/register";
 
 export default function App() {
-  return (
-    <Navigation/>
-  )
+
+    const [signedIn, setSignedIn] = useState(true)
+
+    
+    return (
+        signedIn ? (
+            <Navigation/>
+        ) : (
+            <Register/>
+        )
+    )
 }
 
