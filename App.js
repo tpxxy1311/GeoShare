@@ -5,9 +5,8 @@ import Register from "./Views/register";
 
 export default function App() {
 
-    const [signedIn, setSignedIn] = useState(true)
+    const [signedIn, setSignedIn] = useState(false)
 
-    
     return (
         signedIn ? (
             <Navigation/>
