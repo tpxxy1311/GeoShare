@@ -9,7 +9,7 @@ const TabGroup = () =>{
     return(
         <Tab.Navigator>
             <Tab.Screen name="Friendlist" component={Friendslist}/>
-            <Tab.Screen name="Map" component={Map}/>
+            <Tab.Screen name="Map" component={Map} options={{headerShown: false}}/>
             <Tab.Screen name="Settings" component={Settings}/>
         </Tab.Navigator>
     )

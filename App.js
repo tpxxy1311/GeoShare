@@ -5,7 +5,7 @@ import Register from "./Views/register";
 
 export default function App() {
 
-    const [signedIn, setSignedIn] = useState(false)
+    const [signedIn, setSignedIn] = useState(true)
 
     return (
         signedIn ? (

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
-import { useState } from 'react';
-import React from 'react'
+import React,{ useState } from 'react';
+import axios from 'axios';
 
 const Register = () => {
 
@@ -15,14 +15,21 @@ const Register = () => {
         setPassword(text);
     };
 
-    const handleRegistration = () => {
-        console.log('Registrierung abgeschickt!');
+    const handleRegistration = async () => {
         console.log('Benutzername:', username);
         console.log('Passwort:', password);
         // API Call
+        try {
+            const response = await axios.post('/register', {
+              username: username,
+              password: password,
+            });
+        }
+        catch (error) {
+            console.error('Fehler bei der Registrierung:', error);
+        }
     };
     
-
     return (
     <View style={styles.container}>
       <Text>Register</Text>
