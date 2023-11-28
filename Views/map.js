@@ -35,7 +35,7 @@ const Map = () => {
             <MapView style={styles.map}>
             </MapView>
             <View style={styles.actionButton}>
-                <Ionicons name="location" size={24} color="white" />
+                <Ionicons name="location" size={28} color="white" />
             </View>
         </View>
   )
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     right: 25,
     zIndex: 10,
     padding: 20,
-    borderRadius: 10,
-    backgroundColor:"blue",
+    borderRadius: 15,
+    backgroundColor:"#00639c",
     color:"white",
   }
 })
