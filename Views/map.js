@@ -23,20 +23,42 @@ const Map = () => {
           setLocation(location);
           setLatitude(location.coords.latitude)
           setLongitude(location.coords.longitude);
+          const myLoc = {
+            latitude: latitude,
+            longitude: longitude,
+            latitudeDelta: 0.01,
+            longitudeDelta: 0.01,
+          }
+          mapRef.current.animateToRegion(myLoc)
         })();
     }, []);
 
     const sendMyLocation = () =>{
-
+        const myLoc = {
+            latitude: latitude,
+            longitude: longitude,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.005,
+          }
+        mapRef.current.animateToRegion(myLoc)
+        alert("My current Geolocation: "+longitude+""+latitude)
     }
 
     return (
         <View style={styles.container}>
-            <MapView style={styles.map}>
+            <MapView 
+            style={styles.map}
+            initialRegion={
+            {latitude: 48,
+            longitude: 9,
+            latitudeDelta: 10,
+            longitudeDelta: 10}}
+            ref={mapRef}
+            >
             </MapView>
-            <View style={styles.actionButton}>
+            <TouchableOpacity style={styles.actionButton} onPress={sendMyLocation}>
                 <Ionicons name="location" size={28} color="white" />
-            </View>
+            </TouchableOpacity>
         </View>
   )
 }

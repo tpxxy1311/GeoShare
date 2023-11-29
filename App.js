@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 import Navigation from "./navigation/navigation";
 import { useState } from "react";
-import Register from "./Views/register";
+import Register from "./views/register";
 
 export default function App() {
 

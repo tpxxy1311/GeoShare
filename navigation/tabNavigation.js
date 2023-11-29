@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Friendslist from "../Views/friendlist";
-import Map from "../Views/map";
-import Settings from "../Views/settings";
+import Friendslist from "../views/friendlist";
+import Map from "../views/map"
+import Settings from "../views/settings";
 import { Text } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
