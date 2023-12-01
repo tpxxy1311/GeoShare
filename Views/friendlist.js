@@ -1,19 +1,25 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
-import React, {useEffect, useState} from 'react'
-import friendslistViewModel from '../viewmodels/friendslistViewModel'
-import axios from 'axios'
+import { StyleSheet, Text, View, FlatList, Button } from 'react-native'
+import { useEffect } from 'react'
+import useStore from '../store/store'
 
 const Friendslist = () => {
 
-  const {friendsList, getFriends} = friendslistViewModel();
+  const newFriend = {
+    id: 11,
+    username : "tim.ptrs",
+  }
+
+  const getFriends = useStore((state)=> state.getFriends)
+  const friendsList = useStore((state)=> state.friendsList)
+  const addFriend = useStore((state) => state.addFriend)
 
   useEffect(()=>{
     getFriends();
   },[])
 
   return (
-    <View>
-      <Text onPress={getFriends}>Friendslist</Text>
+    <View style={styles.list}>
+      <Button title="Freund hinzufügen" onPress={()=>addFriend(newFriend)} />
       <FlatList
         data={friendsList}
         keyExtractor={(item) => item.id.toString()}
@@ -29,4 +35,9 @@ const Friendslist = () => {
 
 export default Friendslist
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  list: {
+    marginTop: 50,
+    marginLeft: 50,
+  }
+})

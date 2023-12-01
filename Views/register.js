@@ -20,10 +20,11 @@ const Register = () => {
         console.log('Passwort:', password);
         // API Call
         try {
-            const response = await axios.post('/register', {
+            const response = await axios.post('http://localhost:8080/register', {
               username: username,
               password: password,
             });
+            console.log(response)
         }
         catch (error) {
             console.error('Fehler bei der Registrierung:', error);
