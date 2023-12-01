@@ -1,16 +1,17 @@
 import {create} from 'zustand';
+import {getFriends} from '../viewmodels/friendslistViewModel';
 import axios from 'axios'
 
 
-const getFriends = async (set) => {
-    const response = await axios.get('https://fakestoreapi.com/users');
-    set({ friendsList: response.data });
-}
+// const getFriends = async (set) => {
+//     const response = await axios.get('https://fakestoreapi.com/users');
+//     set({ friendsList: response.data });
+// }
 
 const addFriend = (set) => (newFriend) =>{
     //API Call
     //...
-    
+
     //State aktualisieren
     set((state)=>({
         friendsList: [
@@ -18,7 +19,6 @@ const addFriend = (set) => (newFriend) =>{
         ]
     }))
 }
-
 
 const useStore = create((set) => ({
     friendsList: [],
