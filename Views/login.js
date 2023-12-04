@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
-import React,{ useState } from 'react';
+import React, {useState} from 'react'
 import useStore from '../store/store';
 import axios from 'axios';
 
-const Register = () => {
+const Login = ({navigation}) => {
 
     const login = useStore((state)=> state.login)
-    
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -18,13 +18,12 @@ const Register = () => {
         setPassword(text);
     };
 
-    const handleRegistration = async () => {
+    const handleLogin = async () => {
         console.log('Benutzername:', username);
         console.log('Passwort:', password);
-        console.log(API_ROUTE)
         // API Call
         try {
-            const response = await axios.post(`http://100.117.97.74:8080/api/v1/auth/register`,{
+            const response = await axios.post('http://100.117.97.74:8080/api/v1/auth/login', {
               username: username,
               password: password,
             });
@@ -35,27 +34,28 @@ const Register = () => {
             console.error('Fehler bei der Registrierung:', error);
         }
     };
-    
+
     return (
-    <View style={styles.container}>
-      <Text>Register</Text>
-      <TextInput
-        placeholder="Benutzername"
-        value={username}
-        onChangeText={handleUsernameChange}
-      />
-      <TextInput
-        placeholder="Passwort"
-        secureTextEntry={true}
-        value={password}
-        onChangeText={handlePasswordChange}
-      />
-      <Button title="Registrieren" onPress={handleRegistration} />
+        <View style={styles.container}>
+        <Text>Login</Text>
+        <TextInput
+            placeholder="Benutzername"
+            value={username}
+            onChangeText={handleUsernameChange}
+        />
+        <TextInput
+            placeholder="Passwort"
+            secureTextEntry={true}
+            value={password}
+            onChangeText={handlePasswordChange}
+        />
+        <Button title="Login" onPress={handleLogin} />
+        <Button title="No Account? Register here" onPress={()=>navigation.push('Register')} />
     </View>
   )
 }
 
-export default Register
+export default Login
 
 const styles = StyleSheet.create({
     container: {
