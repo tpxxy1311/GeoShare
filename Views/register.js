@@ -24,7 +24,7 @@ const Register = () => {
         console.log(API_ROUTE)
         // API Call
         try {
-            const response = await axios.post(`http://100.117.97.74:8080/api/v1/auth/register`,{
+            const response = await axios.post(`http://100.117.90.194:8080/api/v1/auth/register`,{
               username: username,
               password: password,
             });
