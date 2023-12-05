@@ -1,34 +1,31 @@
-import { StyleSheet, Text, View, FlatList, Button } from 'react-native'
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
 import { useEffect } from 'react'
-import useStore from '../store/store'
+import { Ionicons } from '@expo/vector-icons';
+import FriendslistItem from '../components/friendslistItem';
+import useStore from '../store/store';
 
-const Friendslist = () => {
-
-  const newFriend = {
-    id: 11,
-    username : "tim.ptrs",
-  }
+const Friendslist = ({navigation}) => {
 
   const getFriends = useStore((state)=> state.getFriends)
   const friendsList = useStore((state)=> state.friendsList)
-  const addFriend = useStore((state) => state.addFriend)
 
   useEffect(()=>{
     getFriends();
   },[])
 
   return (
-    <View style={styles.list}>
-      <Button title="Freund hinzufügen" onPress={()=>addFriend(newFriend)} />
+    <View style={styles.container}>
       <FlatList
+        style={styles.list}
         data={friendsList}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View>
-            <Text>{item.username}</Text>
-          </View>
+          <FriendslistItem username={item.username}/>
         )}
       />
+      <TouchableOpacity style={styles.actionButton} onPress={()=> navigation.navigate('Add Friend')}>
+          <Ionicons name="add" size={28} color="white" />
+      </TouchableOpacity>
     </View>
   )
 }
@@ -36,8 +33,20 @@ const Friendslist = () => {
 export default Friendslist
 
 const styles = StyleSheet.create({
-  list: {
-    marginTop: 50,
-    marginLeft: 50,
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingTop: 10,
+    paddingLeft: 10,
+  },
+  actionButton: {
+    position: 'absolute',
+    bottom: 25,
+    right: 25,
+    zIndex: 10,
+    padding: 17,
+    borderRadius: 15,
+    backgroundColor:"#00639c",
+    color:"white",
   }
 })

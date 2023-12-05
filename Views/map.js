@@ -4,7 +4,7 @@ import React, {useRef, useState, useEffect} from 'react';
 import * as Location from 'expo-location'
 import { Ionicons } from '@expo/vector-icons';
 
-const Map = () => {
+const Map = ({navigation}) => {
 
     const [errorMsg, setErrorMsg] = useState(null);
     const [location, setLocation] = useState(null);
@@ -56,7 +56,7 @@ const Map = () => {
             ref={mapRef}
             >
             </MapView>
-            <TouchableOpacity style={styles.actionButton} onPress={sendMyLocation}>
+            <TouchableOpacity style={styles.actionButton} onPress={()=> navigation.navigate('Send')}>
                 <Ionicons name="location" size={28} color="white" />
             </TouchableOpacity>
         </View>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     bottom: 25,
     right: 25,
     zIndex: 10,
-    padding: 20,
+    padding: 17,
     borderRadius: 15,
     backgroundColor:"#00639c",
     color:"white",

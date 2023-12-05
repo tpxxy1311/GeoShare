@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
 import * as SecureStore from 'expo-secure-store';
 import useStore from '../store/store'
@@ -6,7 +6,7 @@ import useStore from '../store/store'
 const Settings = () => {
 
   async function getToken() {
-    let result = await SecureStore.getItemAsync('authToken');
+    let result = await SecureStore.getItemAsync('authTokecc');
     if (result) {
       alert("🔐 Here's your value 🔐 \n" + result);
     } else {
@@ -21,14 +21,30 @@ const Settings = () => {
   }
 
   return (
-    <View>
-      <Text>Settings</Text>
-      <Button title="Get Token" onPress={getToken} />
-      <Button title="Logout" onPress={handleLogout} />
+    <View style={styles.container}>
+      <Pressable onPress={getToken}>
+        <Text>Show JWT</Text>
+      </Pressable>
+      <Pressable style={styles.logoutButton} onPress={handleLogout}>
+        <Text>Logout</Text>
+      </Pressable>
     </View>
   )
 }
 
 export default Settings
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingTop: 20,
+    paddingLeft: 20,
+  },
+  logoutButton: {
+    borderRadius: 50,
+    width: 80,
+    padding: 10,
+    backgroundColor: '#00639c',
+  }
+})
