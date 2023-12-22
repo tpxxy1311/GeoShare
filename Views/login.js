@@ -1,12 +1,8 @@
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import React, {useState} from 'react';
-import useStore from '../store/store';
-import * as SecureStore from 'expo-secure-store';
-import axios from 'axios';
+import { handleLogin } from '../presenter/authPresenter';
 
 const Login = ({navigation}) => {
-
-    const login = useStore((state)=> state.login)
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -17,25 +13,6 @@ const Login = ({navigation}) => {
 
     const handlePasswordChange = (text) => {
         setPassword(text);
-    };
-
-    const handleLogin = async () => {
-        console.log('Benutzername:', username);
-        console.log('Passwort:', password);
-        // API Call
-        try {
-            const response = await axios.post('http://100.117.90.194:8080/api/v1/auth/login', {
-              username: username,
-              password: password,
-            });
-            console.log(response.data)
-            const token = response.data.token
-            await SecureStore.setItemAsync('authToken', token);
-            login()
-        }
-        catch (error) {
-            console.error('Fehler bei der Registrierung:', error);
-        }
     };
 
     return (
@@ -52,7 +29,7 @@ const Login = ({navigation}) => {
             value={password}
             onChangeText={handlePasswordChange}
         />
-        <Button title="Login" onPress={handleLogin} />
+        <Button title="Login" onPress={()=> handleLogin(username, password)} />
         <Button title="No Account? Register here" onPress={()=>navigation.push('Register')} />
     </View>
   )

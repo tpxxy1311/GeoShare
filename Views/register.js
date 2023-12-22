@@ -1,11 +1,8 @@
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native'
 import React,{ useState } from 'react';
-import useStore from '../store/store';
-import axios from 'axios';
+import { handleRegister } from '../presenter/authPresenter';
 
 const Register = () => {
-
-    const login = useStore((state)=> state.login)
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -16,24 +13,6 @@ const Register = () => {
 
     const handlePasswordChange = (text) => {
         setPassword(text);
-    };
-
-    const handleRegistration = async () => {
-        console.log('Benutzername:', username);
-        console.log('Passwort:', password);
-        console.log(API_ROUTE)
-        // API Call
-        try {
-            const response = await axios.post(`http://100.117.90.194:8080/api/v1/auth/register`,{
-              username: username,
-              password: password,
-            });
-            login()
-            console.log(response.data)
-        }
-        catch (error) {
-            console.error('Fehler bei der Registrierung:', error);
-        }
     };
     
     return (
@@ -50,7 +29,7 @@ const Register = () => {
         value={password}
         onChangeText={handlePasswordChange}
       />
-      <Button title="Registrieren" onPress={handleRegistration} />
+      <Button title="Register" onPress={()=> handleRegister(username, password)} />
     </View>
   )
 }

@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 const FriendsStack = () => {
     
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
         <Stack.Screen name="Friendslist" component={Friendslist} />
         <Stack.Screen name="Add Friend" component={AddFriend} />
     </Stack.Navigator>

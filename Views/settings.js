@@ -2,11 +2,12 @@ import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
 import * as SecureStore from 'expo-secure-store';
 import useStore from '../store/store'
+import { handleLogin } from '../presenter/authPresenter';
 
 const Settings = () => {
 
   async function getToken() {
-    let result = await SecureStore.getItemAsync('authTokecc');
+    let result = await SecureStore.getItemAsync('authToken');
     if (result) {
       alert("🔐 Here's your value 🔐 \n" + result);
     } else {
@@ -24,6 +25,9 @@ const Settings = () => {
     <View style={styles.container}>
       <Pressable onPress={getToken}>
         <Text>Show JWT</Text>
+      </Pressable>
+      <Pressable onPress={()=>handleLogin("Tim", "PW")}>
+        <Text>Login Test</Text>
       </Pressable>
       <Pressable style={styles.logoutButton} onPress={handleLogout}>
         <Text>Logout</Text>

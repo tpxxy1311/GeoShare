@@ -35,7 +35,7 @@ const TabGroup = () =>{
             tabBarStyle: { height: 60, paddingBottom: 5, paddingTop: 2, backgroundColor: "#fcfcff"},
           })}
         >
-            <Tab.Screen name="Friends" component={FriendsStack} options={{headerShown: false}}/>
+            <Tab.Screen name="Friends" component={FriendsStack}/>
             <Tab.Screen name="Map" component={MapStack} options={{headerShown: false}}/>
             <Tab.Screen name="Settings" component={Settings}/>
         </Tab.Navigator>

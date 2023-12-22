@@ -3,17 +3,19 @@ import { useEffect } from 'react'
 import { Ionicons } from '@expo/vector-icons';
 import FriendslistItem from '../components/friendslistItem';
 import useStore from '../store/store';
+import { getFriends } from '../presenter/friendslistPresenter';
+
 
 const Friendslist = ({navigation}) => {
 
-  const getFriends = useStore((state)=> state.getFriends)
   const friendsList = useStore((state)=> state.friendsList)
-
+  
   useEffect(()=>{
-    getFriends();
+    getFriends()
   },[])
 
   return (
+    
     <View style={styles.container}>
       <FlatList
         style={styles.list}

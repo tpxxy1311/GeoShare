@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 const MapStack = () => {
     
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{navigationBarColor: '#ffffff'}}>
         <Stack.Screen name="MapView" component={Map} />
         <Stack.Screen name="Send" component={SendLocation} />
     </Stack.Navigator>
